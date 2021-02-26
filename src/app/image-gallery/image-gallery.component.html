@@ -1,0 +1,84 @@
+ 
+<blockquote class="blockquote">
+  <p class="mb-0">{{wisdom.qoute}}</p>
+  <footer class="blockquote-footer mb-3">{{wisdom.author}} </footer>
+</blockquote> 
+<div  >    
+  <div class="justify-content-center row  ">
+    <h2   >Featured</h2> <br>
+   
+  </div>
+ 
+  <div id="demo" class="carousel slide row  justify-center" data-ride="carousel">
+
+    <!-- Indicators -->
+    <ul class="carousel-indicators">
+      <li data-target="#demo" data-slide-to="0" class="active"></li>
+      <li data-target="#demo" data-slide-to="1"></li>
+      <li data-target="#demo" data-slide-to="2"></li>
+    </ul>
+  
+    <!-- The slideshow -->
+    <div class="carousel-inner col  justify-center">
+      <div *ngFor="let img of (threeImages );let isFirst = first"  class="  carousel-item  col " [class.active]="isFirst" >    
+        <img src="{{img.url}}" alt="{{img.name}}" class="justify-center  "  height="400"> 
+        <div class="carousel-caption">
+          <h3>{{img.name}}</h3>
+          <p>{{img.name}}</p>
+        </div>   
+    </div>    
+
+    </div>
+  
+    <!-- Left and right controls -->
+    <a class="carousel-control-prev" href="#demo" data-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#demo" data-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </a>
+  
+  </div>
+
+
+    <div class="row" style="margin-top:10px;margin-bottom: 10px;">    
+      <div class="col-sm-1">    
+      </div>    
+      <div class="col-2">    
+        <button class="btn btn-success" (click)="filterBy='all'">all</button>    
+      </div>    
+      <div class="col-2">    
+        <button class="btn btn-success" (click)="filterBy='new'">new</button>    
+      </div>    
+      <div class="col-2">    
+        <button class="btn btn-success" (click)="filterBy='his'">his</button>    
+      </div>    
+      <div class="col-2">    
+        <button class="btn btn-success" (click)="filterBy='wa'">wa</button>    
+      </div>    
+      <div class="col-2">    
+        <button class="btn btn-success" (click)="filterBy='w'">w</button>    
+      </div>    
+      <div class="col-sm-1">    
+      </div>    
+    </div> 
+
+   
+    <div class="row">
+        <div class="col">    
+        </div>     
+         <div >    
+      <ul    >      
+        <li *ngFor="let img of (allImages | filterimages:filterBy)"  class="   col-sm-6   col-lg-4 " >    
+            <!-- <a href="{{img.url}}">     -->
+                <a [routerLink]="['./images', img.id]"  >    
+                  <img src="{{img.url}}" class="img  col  " > 
+                </a>    
+                <p>{{img.name}}  </p>     
+        </li>       
+      </ul>    
+    </div>    
+      <div class="col ">    
+      </div>    
+    </div>    
+  </div>  
